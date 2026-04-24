@@ -1,0 +1,61 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <material name="blue"><color rgba="0.2 0.2 0.8 1"/></material>
+    <material name="gray"><color rgba="0.5 0.5 0.5 1"/></material>
+      <material name="red"><color rgba="0.8 0.2 0.2 1"/></material>
+
+        <link name="base_link">
+            <visual><geometry><cylinder radius="0.1" length="0.05"/></geometry><material name="gray"/></visual>
+                <collision><geometry><cylinder radius="0.1" length="0.05"/></geometry></collision>
+                    <inertial><mass value="2.0"/><origin xyz="0 0 0"/><inertia ixx="0.0054" ixy="0.0" ixz="0.0" iyy="0.0054" iyz="0.0" izz="0.01"/></inertial>
+                      </link>
+
+                        <joint name="joint1" type="revolute">
+                            <parent link="base_link"/><child link="link1"/>
+                                <origin xyz="0 0 0.025" rpy="0 0 0"/><axis xyz="0 0 1"/>
+                                    <limit lower="-3.14" upper="3.14" effort="100.0" velocity="1.0"/>
+                                      </joint>
+
+                                        <link name="link1">
+                                            <visual><origin xyz="0 0 0.15" rpy="0 0 0"/><geometry><cylinder radius="0.05" length="0.3"/></geometry><material name="blue"/></visual>
+                                                <collision><origin xyz="0 0 0.15" rpy="0 0 0"/><geometry><cylinder radius="0.05" length="0.3"/></geometry></collision>
+                                                    <inertial><mass value="1.0"/><origin xyz="0 0 0.15" rpy="0 0 0"/><inertia ixx="0.008" ixy="0.0" ixz="0.0" iyy="0.008" iyz="0.0" izz="0.001"/></inertial>
+                                                      </link>
+
+                                                        <joint name="joint2" type="revolute">
+                                                            <parent link="link1"/><child link="link2"/>
+                                                                <origin xyz="0 0 0.3" rpy="0 0 0"/><axis xyz="0 1 0"/>
+                                                                    <limit lower="-1.57" upper="1.57" effort="100.0" velocity="1.0"/>
+                                                                      </joint>
+
+                                                                        <link name="link2">
+                                                                            <visual><origin xyz="0 0 0.15" rpy="0 0 0"/><geometry><cylinder radius="0.04" length="0.3"/></geometry><material name="blue"/></visual>
+                                                                                <collision><origin xyz="0 0 0.15" rpy="0 0 0"/><geometry><cylinder radius="0.04" length="0.3"/></geometry></collision>
+                                                                                    <inertial><mass value="0.8"/><origin xyz="0 0 0.15" rpy="0 0 0"/><inertia ixx="0.006" ixy="0.0" ixz="0.0" iyy="0.006" iyz="0.0" izz="0.0006"/></inertial>
+                                                                                      </link>
+
+                                                                                        <joint name="joint3" type="revolute">
+                                                                                            <parent link="link2"/><child link="link3"/>
+                                                                                                <origin xyz="0 0 0.3" rpy="0 0 0"/><axis xyz="0 1 0"/>
+                                                                                                    <limit lower="-1.57" upper="1.57" effort="100.0" velocity="1.0"/>
+                                                                                                      </joint>
+                                                                                                      
+                                                                                                        <link name="link3">
+                                                                                                            <visual><origin xyz="0 0 0.05" rpy="0 0 0"/><geometry><box size="0.05 0.05 0.1"/></geometry><material name="gray"/></visual>
+                                                                                                                <collision><origin xyz="0 0 0.05" rpy="0 0 0"/><geometry><box size="0.05 0.05 0.1"/></geometry></collision>
+                                                                                                                    <inertial><mass value="0.5"/><origin xyz="0 0 0.05" rpy="0 0 0"/><inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0002"/></inertial>
+                                                                                                                      </link>
+                                                                                                                      
+                                                                                                                        <joint name="gripper_joint" type="prismatic">
+                                                                                                                            <parent link="link3"/><child link="gripper_link"/>
+                                                                                                                                <origin xyz="0 0 0.1" rpy="0 0 0"/><axis xyz="1 0 0"/>
+                                                                                                                                    <limit lower="-0.02" upper="0.02" effort="50.0" velocity="0.5"/>
+                                                                                                                                      </joint>
+                                                                                                                                      
+                                                                                                                                        <link name="gripper_link">
+                                                                                                                                            <visual><origin xyz="0 0 0.025" rpy="0 0 0"/><geometry><box size="0.08 0.02 0.05"/></geometry><material name="red"/></visual>
+                                                                                                                                                <collision><origin xyz="0 0 0.025" rpy="0 0 0"/><geometry><box size="0.08 0.02 0.05"/></geometry></collision>
+                                                                                                                                                    <inertial><mass value="0.2"/><origin xyz="0 0 0.025" rpy="0 0 0"/><inertia ixx="0.00005" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/></inertial>
+                                                                                                                                                      </link>
+                                                                                                                                                      
+                                                                                                                                                      </robot>
