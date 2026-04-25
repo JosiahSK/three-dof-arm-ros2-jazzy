@@ -9,7 +9,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
   # Install URDF, config, and mesh directories
   install(
-    DIRECTORY urdf config meshes
+    DIRECTORY urdf config
       DESTINATION share/${PROJECT_NAME}
       )
 
