@@ -8,7 +8,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   find_package(ament_cmake REQUIRED)
 
   install(
-    DIRECTORY launch rviz scripts
+    DIRECTORY launch
       DESTINATION share/${PROJECT_NAME}
       )
 
